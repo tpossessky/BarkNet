@@ -1,7 +1,140 @@
 {% extends "base.html" %}
-
-{% block title %}Page Title{% endblock %}
-
 {% block content %}
-    <h1>Your content here</h1>
+<style>
+  .login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2rem 1rem;
+  }
+
+  .login-card {
+    width: 100%;
+    max-width: 420px;
+    background: #1a1a1a;
+    border-radius: 2rem;
+    border: 1px solid #333;
+    padding: 3rem 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  .login-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .login-header h1 {
+    font-size: 28px;
+    font-weight: 500;
+    color: #fff;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .login-header p {
+    font-size: 14px;
+    color: #999;
+    margin: 0;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 16px;
+    border: 1px solid #333;
+    border-radius: 2rem;
+    background: #0f0f0f;
+    color: #fff;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .form-group input::placeholder {
+    color: #666;
+  }
+
+  .form-group input:focus {
+    outline: none;
+    border-color: #3273dc;
+    box-shadow: 0 0 0 3px rgba(50, 115, 220, 0.2);
+  }
+
+  .login-button {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    font-size: 16px;
+    font-weight: 500;
+    background: linear-gradient(135deg, #3273dc 0%, #2366d1 100%);
+    color: white;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 0.5rem;
+  }
+
+  .login-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(50, 115, 220, 0.4);
+  }
+
+  .login-button:active {
+    transform: translateY(0);
+  }
+
+  .alert {
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius-md);
+    margin-bottom: 1.5rem;
+    font-size: 14px;
+    background: #3a2020;
+    color: #ff6b6b;
+    border: 1px solid #5a3030;
+  }
+</style>
+
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <h1>Video Stream</h1>
+      <p>Enter your password to continue</p>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="/login">
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          required
+          autofocus
+        >
+      </div>
+
+      <button type="submit" class="login-button">Login</button>
+    </form>
+  </div>
+</div>
 {% endblock %}

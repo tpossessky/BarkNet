@@ -1,0 +1,29 @@
+.kirang-haerang-regular {
+    font-family: "Kirang Haerang", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+h1 {
+    font-size: 4rem;
+    padding-left: 1rem;
+    margin-top: 0;
+}
+
+.orange_text {
+    color: #ff5d00;
+}
+
+.blue_text {
+    color: #00a2ff;
+}
+
+
+body{
+    background-color: #131313;
+}
+
+.video_container {
+    display: flex;
+    justify-content: center; /* Horizontal */
+    align-items: center; /* Vertical */
+}
